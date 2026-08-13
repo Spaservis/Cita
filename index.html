@@ -188,7 +188,7 @@
         <!-- SELECCIÓN DE BARBERO -->
         <label for="barbero">Barbero de tu preferencia</label>
         <select id="barbero" name="barbero" required>
-          <option value="573001118739">Domicilio (Tel: 3001118739)</option>
+          <option value="573001118739">Barbero Domicilio (Tel: 3001118739)</option>
           <option value="573023991740">Guerly Osorio(Tel: 302 399 1740)</option>
           <option value="573043537850">Fredy Gutierrez (Tel: 304 353 7850)</option>
         </select>
@@ -206,22 +206,22 @@
             <select id="servicio" name="servicio" required>
               <option value="">Selecciona servicio</option>
               <option>Corte clásico</option>
-              <option>Fade / degradado</option>
+              <option>cepillado / tintura</option>
               <option>Corte + barba</option>
               <option>Barba</option>
               <option>Corte para niño</option>
-              <option>Otro</option>
+              <option>Estética</option>
             </select>
           </div>
         </div>
 
         <div class="row">
           <div>
-            <label for="fecha">Fecha preferida</label>
+            <label for="fecha">Fecha para la cita</label>
             <input id="fecha" name="fecha" type="date" required>
           </div>
           <div>
-            <label for="hora">Hora disponible</label>
+            <label for="hora">Hora de la cita</label>
             <select id="hora" name="hora" required></select>
           </div>
         </div>
@@ -276,28 +276,28 @@
   // CATÁLOGO DE PRODUCTOS
   const productos = [
     {
-      nombre: "Pijama Dama",
+      nombre: "Pijama Magnus",
       descripcion: "Pijama para dama color amarillo",
-      precio: 30000,
-      imagen: "snoopy1.jpg"
+      precio: 60000,
+      imagen: ""
     },
     {
-      nombre: "Pantalón Pijama Niño",
+      nombre: "",
       descripcion: "Pantalón cómodo de niño color amarillo",
       precio: 15000,
-      imagen: "snoopy1.jpg"
+      imagen: ""
     },
     {
-      nombre: "Crema Facial Rejuvenecedora",
+      nombre: "",
       descripcion: "Crema con colágeno para revitalizar la piel",
       precio: 22000,
-      imagen: "cremarejuvenecedora.jpg"
+      imagen: ""
     },
     {
-      nombre: "Aceite de Argán",
+      nombre: "",
       descripcion: "Aceite nutritivo para cuidado de barba, cabello y piel",
       precio: 18000,
-      imagen: "aceiteargan.jpg"
+      imagen: ""
     }
   ];
 
@@ -443,7 +443,7 @@ Por favor me confirmas disponibilidad y valor del servicio. ¡Muchas gracias!`;
         
         <label style="font-size:12px;">Barbero a pedir:</label>
         <select id="prod-barbero-${i}" style="margin-bottom:12px;">
-          <option value="573014574919">Barbero 1</option>
+          <option value="573001118739">Barbero 1</option>
           <option value="573023991740">Barbero 2</option>
           <option value="573043537850">Barbero 3</option>
         </select>
