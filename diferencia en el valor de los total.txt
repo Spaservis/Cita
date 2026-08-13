@@ -1,0 +1,64 @@
+diferencia en el valor de los totales de la 275
+
+Erika
+
+
+debe acumular lo radicado y lo recaudado identificando el régimen;
+
+git remote add origin https://github.com/Spaservis/Cita
+
+
+https://github.com/Spaservis/Cita
+
+git config --global user.email "farleycano1@gmail.com"
+git config --global user.name "Spaservis"
+
+
+
+
+---------------------
+
+PS C:\Users\Usuario\Desktop\RIPS-main> git init
+Reinitialized existing Git repository in C:/Users/Usuario/Desktop/RIPS-main/.git/
+PS C:\Users\Usuario\Desktop\RIPS-main> git branch -M main
+PS C:\Users\Usuario\Desktop\RIPS-main> git add .
+PS C:\Users\Usuario\Desktop\RIPS-main> git commit -m "Initial commit"
+[main (root-commit) c9dec69] Initial commit
+ 22 files changed, 5099 insertions(+)
+ create mode 100644 RIPS-main/PQRS.html
+ create mode 100644 RIPS-main/README.md
+ create mode 100644 RIPS-main/Reporte.html
+ create mode 100644 RIPS-main/Reporte2275.html
+ create mode 100644 RIPS-main/Resolucion2048.html
+ create mode 100644 RIPS-main/Resolucion256.html
+ create mode 100644 RIPS-main/ac.html
+ create mode 100644 RIPS-main/af.html
+ create mode 100644 RIPS-main/ah.html
+ create mode 100644 RIPS-main/am.html
+ create mode 100644 RIPS-main/an.html
+ create mode 100644 RIPS-main/ap.html
+ create mode 100644 RIPS-main/at.html
+ create mode 100644 RIPS-main/au.html
+ create mode 100644 RIPS-main/ct.html
+ create mode 100644 RIPS-main/farley4505caldas.html
+ create mode 100644 RIPS-main/index.html
+ create mode 100644 RIPS-main/index1.html
+ create mode 100644 RIPS-main/lectordeacta.html
+ create mode 100644 RIPS-main/ripsips2023.html
+ create mode 100644 RIPS-main/saludpublica.html
+ create mode 100644 RIPS-main/us.html
+PS C:\Users\Usuario\Desktop\RIPS-main> git remote add origin https://github.com/Spaservis/RIPS
+PS C:\Users\Usuario\Desktop\RIPS-main> git push -u origin main
+To https://github.com/Spaservis/RIPS
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'https://github.com/Spaservis/RIPS'
+hint: Updates were rejected because the remote contains work that you do not
+hint: have locally. This is usually caused by another repository pushing to
+hint: the same ref. If you want to integrate the remote changes, use
+hint: 'git pull' before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+
+
+
+
