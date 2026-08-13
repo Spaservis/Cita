@@ -186,18 +186,31 @@
       ? new Date(fechaValor + "T00:00:00").toLocaleDateString("es-CO")
       : "";
 
+    // Emojis vía Unicode para preservar UTF-8 al pasar por encodeURIComponent().
+    const emoji = {
+      persona: "\u{1F464}",
+      telefono: "\u{1F4DE}",
+      tijeras: "\u{2702}\u{FE0F}",
+      calendario: "\u{1F4C5}",
+      reloj: "\u{1F550}",
+      casa: "\u{1F3E0}",
+      notas: "\u{1F4DD}"
+    };
+
+    const notas = observaciones || "Sin observaciones";
+
     const texto =
-`💈 SOLICITUD DE TURNO - BARBERÍA A DOMICILIO
-
-👤 Cliente: ${nombre}
-📞 Teléfono: ${telefono}
-✂️ Servicio: ${servicio}
-📅 Fecha solicitada: ${fechaBonita}
-🕐 Hora solicitada: ${hora}
-🏠 Dirección / referencia: ${direccion}
-📝 Observaciones: ${observaciones || "Sin observaciones"}
-
-Por favor confirmar disponibilidad y valor del servicio.`;
+`*SOLICITUD DE TURNO - BARBERÍA A DOMICILIO*
+------------------------------------------
+${emoji.persona} *Cliente:* ${nombre}
+${emoji.telefono} *Teléfono:* ${telefono}
+${emoji.tijeras} *Servicio:* ${servicio}
+${emoji.calendario} *Fecha:* ${fechaBonita}
+${emoji.reloj} *Hora:* ${hora}
+${emoji.casa} *Dirección:* ${direccion}
+${emoji.notas} *Notas:* ${notas}
+------------------------------------------
+Por favor me confirmas disponibilidad y valor del servicio. ¡Muchas gracias!`;
 
     const url = "https://wa.me/" + BARBERO + "?text=" + encodeURIComponent(texto);
 
