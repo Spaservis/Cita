@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#111111">
   <title>Barbería & Servicios a Domicilio | Reserva Tu Turno</title>
+
   <style>
     :root{
       --black:#0d0d0d;
@@ -16,17 +17,29 @@
       --line:#303030;
       --card-bg:#151515;
     }
-    *{box-sizing:border-box}
+
+    *{
+      box-sizing:border-box;
+    }
+
     body{
       margin:0;
       font-family:Arial,Helvetica,sans-serif;
       background:linear-gradient(135deg,#080808,#1b1b1b);
       color:var(--white);
-      min-height: 100vh;
+      min-height:100vh;
     }
-    .wrap{max-width:850px;margin:auto;padding:18px}
-    
-    /* ENCABEZADO */
+
+    .wrap{
+      max-width:850px;
+      margin:auto;
+      padding:18px;
+    }
+
+    /* =========================
+       ENCABEZADO
+       ========================= */
+
     header{
       text-align:center;
       padding:28px 18px 22px;
@@ -35,36 +48,73 @@
       border:1px solid #333;
       box-shadow:0 12px 35px #0008;
     }
-    .logo{font-size:52px}
-    h1{font-size:clamp(28px,6vw,52px);margin:5px 0;color:var(--yellow);font-weight:900}
-    .subtitle{font-size:clamp(16px,3.5vw,24px);font-weight:800;color:#e0e0e0}
-    .tag{display:inline-block;background:var(--green);color:#111;padding:9px 15px;border-radius:30px;font-weight:900;margin-top:12px}
 
-    /* NAVEGACIÓN Y PESTAÑAS */
-    nav.menu-bar {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin-top: 20px;
-      flex-wrap: wrap;
-    }
-    .nav-btn {
-      background: #202020;
-      color: var(--white);
-      border: 1px solid var(--line);
-      padding: 12px 20px;
-      border-radius: 12px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    .nav-btn:hover, .nav-btn.active {
-      background: var(--yellow);
-      color: var(--black);
-      border-color: var(--yellow);
+    /* LOGO COMO IMAGEN */
+    .logo img{
+      width:140px;
+      height:140px;
+      object-fit:contain;
+      display:block;
+      margin:0 auto 10px;
     }
 
-    /* TARJETAS Y SECCIONES */
+    h1{
+      font-size:clamp(28px,6vw,52px);
+      margin:5px 0;
+      color:var(--yellow);
+      font-weight:900;
+    }
+
+    .subtitle{
+      font-size:clamp(16px,3.5vw,24px);
+      font-weight:800;
+      color:#e0e0e0;
+    }
+
+    .tag{
+      display:inline-block;
+      background:var(--green);
+      color:#111;
+      padding:9px 15px;
+      border-radius:30px;
+      font-weight:900;
+      margin-top:12px;
+    }
+
+    /* =========================
+       NAVEGACIÓN
+       ========================= */
+
+    nav.menu-bar{
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      margin-top:20px;
+      flex-wrap:wrap;
+    }
+
+    .nav-btn{
+      background:#202020;
+      color:var(--white);
+      border:1px solid var(--line);
+      padding:12px 20px;
+      border-radius:12px;
+      font-weight:bold;
+      cursor:pointer;
+      transition:all 0.3s ease;
+    }
+
+    .nav-btn:hover,
+    .nav-btn.active{
+      background:var(--yellow);
+      color:var(--black);
+      border-color:var(--yellow);
+    }
+
+    /* =========================
+       TARJETAS Y SECCIONES
+       ========================= */
+
     .card{
       margin-top:18px;
       padding:22px;
@@ -73,300 +123,872 @@
       border-radius:20px;
       box-shadow:0 8px 25px #0006;
     }
-    .tab-content { display: none; }
-    .tab-content.active { display: block; }
 
-    h2{margin-top:0;color:var(--yellow)}
-    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-    .step{background:#202020;padding:15px;border-radius:14px;text-align:center}
-    .step b{display:block;color:var(--green);font-size:19px;margin-bottom:5px}
-
-    /* FORMULARIOS */
-    label{display:block;font-weight:800;margin:15px 0 7px;color:#ececec}
-    input,select,textarea{
-      width:100%;padding:14px;border-radius:11px;border:1px solid #444;
-      background:#0e0e0e;color:#fff;font-size:16px;outline:none;
+    .tab-content{
+      display:none;
     }
-    input:focus,select:focus,textarea:focus{border-color:var(--yellow)}
-    textarea{min-height:90px;resize:vertical}
-    .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 
-    /* BOTONES */
+    .tab-content.active{
+      display:block;
+    }
+
+    h2{
+      margin-top:0;
+      color:var(--yellow);
+    }
+
+    .steps{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:10px;
+    }
+
+    .step{
+      background:#202020;
+      padding:15px;
+      border-radius:14px;
+      text-align:center;
+    }
+
+    .step b{
+      display:block;
+      color:var(--green);
+      font-size:19px;
+      margin-bottom:5px;
+    }
+
+    /* =========================
+       FORMULARIOS
+       ========================= */
+
+    label{
+      display:block;
+      font-weight:800;
+      margin:15px 0 7px;
+      color:#ececec;
+    }
+
+    input,
+    select,
+    textarea{
+      width:100%;
+      padding:14px;
+      border-radius:11px;
+      border:1px solid #444;
+      background:#0e0e0e;
+      color:#fff;
+      font-size:16px;
+      outline:none;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus{
+      border-color:var(--yellow);
+    }
+
+    textarea{
+      min-height:90px;
+      resize:vertical;
+    }
+
+    .row{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+    }
+
+    /* =========================
+       BOTONES
+       ========================= */
+
     button.btn-primary{
-      width:100%;margin-top:20px;padding:17px;border:0;border-radius:13px;
-      background:#25d366;color:#071008;font-size:18px;font-weight:900;cursor:pointer;
-      transition: filter 0.2s;
+      width:100%;
+      margin-top:20px;
+      padding:17px;
+      border:0;
+      border-radius:13px;
+      background:#25d366;
+      color:#071008;
+      font-size:18px;
+      font-weight:900;
+      cursor:pointer;
+      transition:filter 0.2s;
     }
+
     button.btn-secondary{
-      width:100%;margin-top:10px;padding:12px;border:1px solid #444;border-radius:11px;
-      background:#222;color:var(--gray);font-weight:bold;cursor:pointer;
+      width:100%;
+      margin-top:10px;
+      padding:12px;
+      border:1px solid #444;
+      border-radius:11px;
+      background:#222;
+      color:var(--gray);
+      font-weight:bold;
+      cursor:pointer;
     }
+
     button.btn-admin{
-      background: transparent;
-      border: 1px dashed #e63946;
-      color: #e63946;
-      padding: 8px 12px;
-      border-radius: 8px;
-      font-size: 12px;
-      cursor: pointer;
-      margin-top: 15px;
+      background:transparent;
+      border:1px dashed #e63946;
+      color:#e63946;
+      padding:8px 12px;
+      border-radius:8px;
+      font-size:12px;
+      cursor:pointer;
+      margin-top:15px;
     }
-    button:hover{filter:brightness(1.08)}
 
-    .note{font-size:13px;color:var(--gray);line-height:1.5;margin-top:12px}
+    button:hover{
+      filter:brightness(1.08);
+    }
+
+    .note{
+      font-size:13px;
+      color:var(--gray);
+      line-height:1.5;
+      margin-top:12px;
+    }
+
     .success{
-      display:none;margin-top:15px;padding:14px;border-radius:12px;
-      background:#193b17;color:#d9ffd5;border:1px solid #4c9e46;
+      display:none;
+      margin-top:15px;
+      padding:14px;
+      border-radius:12px;
+      background:#193b17;
+      color:#d9ffd5;
+      border:1px solid #4c9e46;
     }
 
-    /* CATÁLOGO DE PRODUCTOS */
-    .catalogo-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 18px;
-      margin-top: 15px;
+    /* =========================
+       CATÁLOGO DE PRODUCTOS
+       ========================= */
+
+    .catalogo-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      gap:18px;
+      margin-top:15px;
     }
-    .producto-card {
-      background: #1c1c1c;
-      border: 1px solid var(--line);
-      padding: 16px;
-      border-radius: 14px;
-      text-align: center;
+
+    .producto-card{
+      background:#1c1c1c;
+      border:1px solid var(--line);
+      padding:16px;
+      border-radius:14px;
+      text-align:center;
     }
-    .producto-card img {
-      width: 100%;
-      height: 160px;
-      object-fit: cover;
-      border-radius: 10px;
-      background: #000;
+
+    .producto-card img{
+      width:100%;
+      height:160px;
+      object-fit:cover;
+      border-radius:10px;
+      background:#000;
     }
-    .producto-card h3 { color: var(--yellow); margin: 12px 0 6px; }
-    .producto-card .precio { color: var(--green); font-size: 18px; font-weight: bold; margin-bottom: 12px; }
+
+    .producto-card h3{
+      color:var(--yellow);
+      margin:12px 0 6px;
+    }
+
+    .producto-card .precio{
+      color:var(--green);
+      font-size:18px;
+      font-weight:bold;
+      margin-bottom:12px;
+    }
+
+    /* =========================
+       CONTACTO
+       ========================= */
 
     .contact{
-      text-align:center;padding:25px 18px 10px;color:var(--gray)
+      text-align:center;
+      padding:25px 18px 10px;
+      color:var(--gray);
     }
 
+    /* =========================
+       CELULARES
+       ========================= */
+
     @media(max-width:650px){
-      .steps,.row{grid-template-columns:1fr}
-      .wrap{padding:10px}
-      .card{padding:16px}
+
+      .steps,
+      .row{
+        grid-template-columns:1fr;
+      }
+
+      .wrap{
+        padding:10px;
+      }
+
+      .card{
+        padding:16px;
+      }
+
+      .logo img{
+        width:110px;
+        height:110px;
+      }
     }
   </style>
 </head>
+
 <body>
+
 <div class="wrap">
 
+  <!-- =========================
+       ENCABEZADO
+       ========================= -->
+
   <header>
-    <div class="logo">💈✂️</div>
+
+    <!-- AQUÍ ESTÁ EL NUEVO LOGO -->
+    <div class="logo">
+      <img src="logo.png" alt="Logo de la barbería">
+    </div>
+
     <h1>BARBERÍA, ESTÉTICA CAPILAR Y PELUQUERÍA</h1>
-    <div class="subtitle">TU ESTILO, DONDE ESTÉS</div>
-    <div class="tag">📲 RESERVA TU TURNO</div>
+
+    <div class="subtitle">
+      TU ESTILO, DONDE ESTÉS
+    </div>
+
+    <div class="tag">
+      📲 RESERVA TU TURNO
+    </div>
+
   </header>
 
-  <!-- MENU DE NAVEGACIÓN -->
+
+  <!-- =========================
+       MENU DE NAVEGACIÓN
+       ========================= -->
+
   <nav class="menu-bar">
-    <button class="nav-btn active" onclick="switchTab('reserva', event)">💈 Reservar Turno</button>
-    <button class="nav-btn" onclick="switchTab('catalogo', event)">🛍️ Catálogo</button>
+
+    <button
+      class="nav-btn active"
+      onclick="switchTab('reserva', event)">
+      💈 Reservar Turno
+    </button>
+
+    <button
+      class="nav-btn"
+      onclick="switchTab('catalogo', event)">
+      🛍️ Catálogo
+    </button>
+
   </nav>
 
-  <!-- SECCIÓN 1: RESERVA DE TURNO -->
+
+  <!-- =========================
+       SECCIÓN 1: RESERVA
+       ========================= -->
+
   <div id="tab-reserva" class="tab-content active">
-    <section class="card">
-      <h2>¿Cómo funciona?</h2>
-      <div class="steps">
-        <div class="step"><b>1. SOLICITA</b>Completa tus datos y selecciona barbero</div>
-        <div class="step"><b>2. ENVÍA</b>La solicitud por WhatsApp</div>
-        <div class="step"><b>3. CONFIRMA</b>El horario con el profesional</div>
-      </div>
-    </section>
 
     <section class="card">
+
+      <h2>¿Cómo funciona?</h2>
+
+      <div class="steps">
+
+        <div class="step">
+          <b>1. SOLICITA</b>
+          Completa tus datos y selecciona barbero
+        </div>
+
+        <div class="step">
+          <b>2. ENVÍA</b>
+          La solicitud por WhatsApp
+        </div>
+
+        <div class="step">
+          <b>3. CONFIRMA</b>
+          El horario con el profesional
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <section class="card">
+
       <h2>💈 Solicitar turno</h2>
 
       <form id="bookingForm">
+
         <!-- SELECCIÓN DE BARBERO -->
-        <label for="barbero">Barbero de tu preferencia</label>
+
+        <label for="barbero">
+          Barbero de tu preferencia
+        </label>
+
         <select id="barbero" name="barbero" required>
-          <option value="573001118739">Barbero Domicilio (Tel: 3001118739)</option>
-          <option value="573023991740">Guerly Osorio(Tel: 302 399 1740)</option>
-          <option value="573043537850">Fredy Gutierrez (Tel: 304 353 7850)</option>
+
+          <option value="573001118739">
+            Barbero Domicilio (Tel: 3001118739)
+          </option>
+
+          <option value="573023991740">
+            Guerly Osorio (Tel: 302 399 1740)
+          </option>
+
+          <option value="573043537850">
+            Fredy Gutierrez (Tel: 304 353 7850)
+          </option>
+
         </select>
 
-        <label for="nombre">Nombre completo</label>
-        <input id="nombre" name="nombre" required placeholder="Nombre del cliente">
+
+        <label for="nombre">
+          Nombre completo
+        </label>
+
+        <input
+          id="nombre"
+          name="nombre"
+          required
+          placeholder="Nombre del cliente"
+        >
+
 
         <div class="row">
+
           <div>
-            <label for="telefono">Teléfono</label>
-            <input id="telefono" name="telefono" type="tel" required placeholder="300 000 0000">
+
+            <label for="telefono">
+              Teléfono
+            </label>
+
+            <input
+              id="telefono"
+              name="telefono"
+              type="tel"
+              required
+              placeholder="300 000 0000"
+            >
+
           </div>
+
+
           <div>
-            <label for="servicio">Servicio</label>
-            <select id="servicio" name="servicio" required>
-              <option value="">Selecciona servicio</option>
-              <option>Corte clásico</option>
-              <option>cepillado / tintura</option>
-              <option>Corte + barba</option>
-              <option>Barba</option>
-              <option>Corte para niño</option>
-              <option>Estética</option>
+
+            <label for="servicio">
+              Servicio
+            </label>
+
+            <select
+              id="servicio"
+              name="servicio"
+              required
+            >
+
+              <option value="">
+                Selecciona servicio
+              </option>
+
+              <option>
+                Corte clásico
+              </option>
+
+              <option>
+                cepillado / tintura
+              </option>
+
+              <option>
+                Corte + barba
+              </option>
+
+              <option>
+                Barba
+              </option>
+
+              <option>
+                Corte para niño
+              </option>
+
+              <option>
+                Estética
+              </option>
+
             </select>
+
           </div>
+
         </div>
+
 
         <div class="row">
+
           <div>
-            <label for="fecha">Fecha para la cita</label>
-            <input id="fecha" name="fecha" type="date" required>
+
+            <label for="fecha">
+              Fecha para la cita
+            </label>
+
+            <input
+              id="fecha"
+              name="fecha"
+              type="date"
+              required
+            >
+
           </div>
+
+
           <div>
-            <label for="hora">Hora de la cita</label>
-            <select id="hora" name="hora" required></select>
+
+            <label for="hora">
+              Hora de la cita
+            </label>
+
+            <select
+              id="hora"
+              name="hora"
+              required
+            ></select>
+
           </div>
+
         </div>
 
-        <label for="direccion">Dirección / punto de referencia</label>
-        <input id="direccion" name="direccion" required placeholder="Dirección exacta para el domicilio">
 
-        <label for="mensaje">Observaciones / Referencia</label>
-        <textarea id="mensaje" name="mensaje" placeholder="Ej.: estilo solicitado, indicación para llegar, etc."></textarea>
+        <label for="direccion">
+          Dirección / punto de referencia
+        </label>
 
-        <button type="submit" class="btn-primary">📲 ENVIAR SOLICITUD POR WHATSAPP</button>
-        <button type="button" class="btn-secondary" onclick="limpiarCampos()">Limpiar Formulario</button>
+        <input
+          id="direccion"
+          name="direccion"
+          required
+          placeholder="Dirección exacta para el domicilio"
+        >
+
+
+        <label for="mensaje">
+          Observaciones / Referencia
+        </label>
+
+        <textarea
+          id="mensaje"
+          name="mensaje"
+          placeholder="Ej.: estilo solicitado, indicación para llegar, etc."
+        ></textarea>
+
+
+        <button
+          type="submit"
+          class="btn-primary"
+        >
+          📲 ENVIAR SOLICITUD POR WHATSAPP
+        </button>
+
+
+        <button
+          type="button"
+          class="btn-secondary"
+          onclick="limpiarCampos()"
+        >
+          Limpiar Formulario
+        </button>
+
 
         <div id="success" class="success">
-          Se abrirá WhatsApp con la solicitud preparada. Revisa el mensaje y presiona <b>Enviar</b>.
+
+          Se abrirá WhatsApp con la solicitud preparada.
+          Revisa el mensaje y presiona <b>Enviar</b>.
+
         </div>
+
 
         <div class="note">
-          El turno queda confirmado únicamente cuando el profesional responda y confirme disponibilidad.
+
+          El turno queda confirmado únicamente cuando
+          el profesional responda y confirme disponibilidad.
+
         </div>
+
       </form>
 
-      <div style="margin-top: 25px; border-top: 1px dashed var(--line); padding-top: 15px;">
-        <button class="btn-admin" type="button" onclick="limpiarHistorial()">🧹 Limpiar Historial de Turnos (Admin)</button>
+
+      <div
+        style="
+          margin-top:25px;
+          border-top:1px dashed var(--line);
+          padding-top:15px;
+        "
+      >
+
+        <button
+          class="btn-admin"
+          type="button"
+          onclick="limpiarHistorial()"
+        >
+          🧹 Limpiar Historial de Turnos (Admin)
+        </button>
+
       </div>
+
     </section>
+
   </div>
 
-  <!-- SECCIÓN 2: CATÁLOGO DE PRODUCTOS -->
+
+  <!-- =========================
+       SECCIÓN 2: CATÁLOGO
+       ========================= -->
+
   <div id="tab-catalogo" class="tab-content">
+
     <section class="card">
+
       <h2>🛍️ Catálogo de Productos</h2>
-      <p style="color: var(--gray);">Selecciona tus productos y realiza el pedido directamente por WhatsApp.</p>
-      
-      <div id="catalogo-container" class="catalogo-grid"></div>
+
+      <p style="color:var(--gray);">
+
+        Selecciona tus productos y realiza el pedido
+        directamente por WhatsApp.
+
+      </p>
+
+      <div
+        id="catalogo-container"
+        class="catalogo-grid"
+      ></div>
+
     </section>
+
   </div>
+
+
+  <!-- =========================
+       PIE DE PÁGINA
+       ========================= -->
 
   <div class="contact">
-    <strong>✂️ CORTE • ESTILO • COMODIDAD</strong><br>
+
+    <strong>
+      CORTE • ESTILO • COMODIDAD
+    </strong>
+
+    <br>
+
     ¡Reserva tu cita hoy mismo!
+
   </div>
 
 </div>
 
-<script>
-  // CONFIGURACIÓN DE HORARIOS Y DATOS
-  const horarios = ["09:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "01:00 PM", "02:00 PM", "03:00 PM", "04:00 PM", "05:00 PM", "06:00 PM", "07:00 PM", "08:00 PM", "09:00 PM", "10:00 PM"];
-  const CONTRASENA_ADMIN = "admin123";
-  let turnosTomados = JSON.parse(localStorage.getItem("turnos_barberia")) || [];
 
+<script>
+
+  // =========================================
+  // CONFIGURACIÓN DE HORARIOS
+  // =========================================
+
+  const horarios = [
+    "09:00 AM",
+    "10:00 AM",
+    "11:00 AM",
+    "12:00 PM",
+    "01:00 PM",
+    "02:00 PM",
+    "03:00 PM",
+    "04:00 PM",
+    "05:00 PM",
+    "06:00 PM",
+    "07:00 PM",
+    "08:00 PM",
+    "09:00 PM",
+    "10:00 PM"
+  ];
+
+  const CONTRASENA_ADMIN = "admin123";
+
+  let turnosTomados =
+    JSON.parse(
+      localStorage.getItem("turnos_barberia")
+    ) || [];
+
+
+  // =========================================
   // CATÁLOGO DE PRODUCTOS
+  // =========================================
+
   const productos = [
+
     {
       nombre: "Buso para dama",
       descripcion: "Confecciones Magnus",
       precio: 30000,
       imagen: "busodama.jpg.jpeg"
     }
+
   ];
 
+
+  // =========================================
   // NAVEGACIÓN ENTRE PESTAÑAS
-  function switchTab(tabId, event) {
-    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-    document.querySelectorAll('.nav-btn').forEach(el => el.classList.remove('active'));
-    
-    document.getElementById('tab-' + tabId).classList.add('active');
-    if (event && event.currentTarget) {
+  // =========================================
+
+  function switchTab(tabId, event){
+
+    document
+      .querySelectorAll('.tab-content')
+      .forEach(el =>
+        el.classList.remove('active')
+      );
+
+    document
+      .querySelectorAll('.nav-btn')
+      .forEach(el =>
+        el.classList.remove('active')
+      );
+
+    document
+      .getElementById('tab-' + tabId)
+      .classList.add('active');
+
+    if(event && event.currentTarget){
+
       event.currentTarget.classList.add('active');
+
     }
+
   }
 
+
+  // =========================================
   // FECHA MÍNIMA = HOY
-  const fechaInput = document.getElementById("fecha");
+  // =========================================
+
+  const fechaInput =
+    document.getElementById("fecha");
+
   const hoy = new Date();
-  const yyyy = hoy.getFullYear();
-  const mm = String(hoy.getMonth()+1).padStart(2,"0");
-  const dd = String(hoy.getDate()).padStart(2,"0");
-  fechaInput.min = `${yyyy}-${mm}-${dd}`;
-  fechaInput.value = `${yyyy}-${mm}-${dd}`;
 
+  const yyyy =
+    hoy.getFullYear();
+
+  const mm =
+    String(hoy.getMonth()+1)
+      .padStart(2,"0");
+
+  const dd =
+    String(hoy.getDate())
+      .padStart(2,"0");
+
+  fechaInput.min =
+    `${yyyy}-${mm}-${dd}`;
+
+  fechaInput.value =
+    `${yyyy}-${mm}-${dd}`;
+
+
+  // =========================================
   // ACTUALIZAR HORARIOS DISPONIBLES
-  function actualizarHorarios() {
-    const selectHora = document.getElementById("hora");
-    const fechaSeleccionada = fechaInput.value;
-    
-    const tomadosEnFecha = turnosTomados
-      .filter(t => t.fecha === fechaSeleccionada)
-      .map(t => t.hora);
+  // =========================================
 
-    const disponibles = horarios.filter(h => !tomadosEnFecha.includes(h));
+  function actualizarHorarios(){
+
+    const selectHora =
+      document.getElementById("hora");
+
+    const fechaSeleccionada =
+      fechaInput.value;
+
+    const tomadosEnFecha =
+      turnosTomados
+        .filter(
+          t => t.fecha === fechaSeleccionada
+        )
+        .map(
+          t => t.hora
+        );
+
+    const disponibles =
+      horarios.filter(
+        h => !tomadosEnFecha.includes(h)
+      );
 
     selectHora.innerHTML = "";
-    if (disponibles.length === 0) {
-      const option = document.createElement("option");
-      option.textContent = "Sin turnos libres para esta fecha";
+
+    if(disponibles.length === 0){
+
+      const option =
+        document.createElement("option");
+
+      option.textContent =
+        "Sin turnos libres para esta fecha";
+
       option.value = "";
+
       selectHora.appendChild(option);
-    } else {
+
+    }else{
+
       disponibles.forEach(h => {
-        const option = document.createElement("option");
+
+        const option =
+          document.createElement("option");
+
         option.value = h;
+
         option.textContent = h;
+
         selectHora.appendChild(option);
+
       });
+
     }
+
   }
 
-  fechaInput.addEventListener("change", actualizarHorarios);
 
-  function limpiarCampos() {
-    document.getElementById("bookingForm").reset();
-    fechaInput.value = `${yyyy}-${mm}-${dd}`;
+  fechaInput.addEventListener(
+    "change",
+    actualizarHorarios
+  );
+
+
+  // =========================================
+  // LIMPIAR FORMULARIO
+  // =========================================
+
+  function limpiarCampos(){
+
+    document
+      .getElementById("bookingForm")
+      .reset();
+
+    fechaInput.value =
+      `${yyyy}-${mm}-${dd}`;
+
     actualizarHorarios();
+
   }
 
+
+  // =========================================
   // ENVÍO DE RESERVA POR WHATSAPP
-  document.getElementById("bookingForm").addEventListener("submit", function(e){
-    e.preventDefault();
+  // =========================================
 
-    const barberoTelefono = document.getElementById("barbero").value;
-    const nombre = document.getElementById("nombre").value.trim();
-    const telefono = document.getElementById("telefono").value.trim();
-    const servicio = document.getElementById("servicio").value;
-    const fechaValor = document.getElementById("fecha").value;
-    const hora = document.getElementById("hora").value;
-    const direccion = document.getElementById("direccion").value.trim();
-    const observaciones = document.getElementById("mensaje").value.trim() || "Sin observaciones";
+  document
+    .getElementById("bookingForm")
+    .addEventListener(
+      "submit",
+      function(e){
 
-    if(!hora) {
-      alert("Por favor selecciona una hora disponible.");
-      return;
-    }
+        e.preventDefault();
 
-    const fechaBonita = fechaValor
-      ? new Date(fechaValor + "T00:00:00").toLocaleDateString("es-CO")
-      : "";
 
-    // Guardar reserva localmente
-    const nuevoTurno = { fecha: fechaValor, hora, nombre, telefono };
-    turnosTomados.push(nuevoTurno);
-    localStorage.setItem("turnos_barberia", JSON.stringify(turnosTomados));
+        const barberoTelefono =
+          document
+            .getElementById("barbero")
+            .value;
 
-    // Formato de texto para WhatsApp
-    const texto = 
+
+        const nombre =
+          document
+            .getElementById("nombre")
+            .value
+            .trim();
+
+
+        const telefono =
+          document
+            .getElementById("telefono")
+            .value
+            .trim();
+
+
+        const servicio =
+          document
+            .getElementById("servicio")
+            .value;
+
+
+        const fechaValor =
+          document
+            .getElementById("fecha")
+            .value;
+
+
+        const hora =
+          document
+            .getElementById("hora")
+            .value;
+
+
+        const direccion =
+          document
+            .getElementById("direccion")
+            .value
+            .trim();
+
+
+        const observaciones =
+          document
+            .getElementById("mensaje")
+            .value
+            .trim()
+          || "Sin observaciones";
+
+
+        if(!hora){
+
+          alert(
+            "Por favor selecciona una hora disponible."
+          );
+
+          return;
+
+        }
+
+
+        const fechaBonita =
+          fechaValor
+            ? new Date(
+                fechaValor + "T00:00:00"
+              ).toLocaleDateString("es-CO")
+            : "";
+
+
+        // Guardar reserva localmente
+
+        const nuevoTurno = {
+
+          fecha: fechaValor,
+          hora,
+          nombre,
+          telefono
+
+        };
+
+
+        turnosTomados.push(
+          nuevoTurno
+        );
+
+
+        localStorage.setItem(
+          "turnos_barberia",
+          JSON.stringify(turnosTomados)
+        );
+
+
+        // =====================================
+        // MENSAJE DE WHATSAPP
+        // =====================================
+
+        const texto =
+
 `*SOLICITUD DE TURNO - BARBERÍA A DOMICILIO*
 ------------------------------------------
 👤 *Cliente:* ${nombre}
@@ -379,78 +1001,275 @@
 ------------------------------------------
 Por favor me confirmas disponibilidad y valor del servicio. ¡Muchas gracias!`;
 
-    const url = "https://wa.me/" + barberoTelefono + "?text=" + encodeURIComponent(texto);
 
-    document.getElementById("success").style.display = "block";
-    window.open(url, "_blank");
+        const url =
+          "https://wa.me/"
+          + barberoTelefono
+          + "?text="
+          + encodeURIComponent(texto);
 
-    actualizarHorarios();
-  });
 
-  // LIMPIAR HISTORIAL (ADMINISTRADOR)
-  function limpiarHistorial() {
-    const clave = prompt("🔐 Ingrese la contraseña de administrador:");
-    if (clave === CONTRASENA_ADMIN) {
-      if (confirm("¿Está seguro de limpiar todos los turnos ocupados?")) {
-        localStorage.removeItem("turnos_barberia");
-        turnosTomados = [];
-        alert("✅ Historial de turnos limpiado correctamente.");
+        document
+          .getElementById("success")
+          .style.display = "block";
+
+
+        window.open(
+          url,
+          "_blank"
+        );
+
+
         actualizarHorarios();
+
       }
-    } else if (clave !== null) {
-      alert("❌ Contraseña incorrecta.");
+    );
+
+
+  // =========================================
+  // LIMPIAR HISTORIAL
+  // =========================================
+
+  function limpiarHistorial(){
+
+    const clave =
+      prompt(
+        "🔐 Ingrese la contraseña de administrador:"
+      );
+
+
+    if(clave === CONTRASENA_ADMIN){
+
+      if(
+        confirm(
+          "¿Está seguro de limpiar todos los turnos ocupados?"
+        )
+      ){
+
+        localStorage.removeItem(
+          "turnos_barberia"
+        );
+
+        turnosTomados = [];
+
+        alert(
+          "✅ Historial de turnos limpiado correctamente."
+        );
+
+        actualizarHorarios();
+
+      }
+
+    }else if(clave !== null){
+
+      alert(
+        "❌ Contraseña incorrecta."
+      );
+
     }
+
   }
 
-  // RENDERIZAR CATÁLOGO DE PRODUCTOS
-  function cargarCatalogo() {
-    const contenedor = document.getElementById("catalogo-container");
+
+  // =========================================
+  // RENDERIZAR CATÁLOGO
+  // =========================================
+
+  function cargarCatalogo(){
+
+    const contenedor =
+      document.getElementById(
+        "catalogo-container"
+      );
+
     contenedor.innerHTML = "";
 
-    productos.forEach((p, i) => {
-      const card = document.createElement("div");
-      card.className = "producto-card";
-      card.innerHTML = `
-        <img src="${p.imagen}" alt="${p.nombre}">
-        <h3>${p.nombre}</h3>
-        <p style="font-size:13px; color:#aaa;">${p.descripcion}</p>
-        <div class="precio">$${p.precio.toLocaleString()} COP</div>
-        
-        <label style="margin-top:5px; font-size:12px;">Cantidad:</label>
-        <input type="number" min="1" value="1" id="cant-${i}" style="margin-bottom:8px;">
-        
-        <input type="text" placeholder="Tu Nombre" id="prod-nombre-${i}" style="margin-bottom:8px;">
-        <input type="tel" placeholder="Tu WhatsApp" id="prod-tel-${i}" style="margin-bottom:8px;">
-        <input type="text" placeholder="Dirección de Envío" id="prod-dir-${i}" style="margin-bottom:8px;">
-        
-        <label style="font-size:12px;">Vendedor a pedir:</label>
-        <select id="prod-barbero-${i}" style="margin-bottom:12px;">
-          <option value="573012096741">confecciones magnus</option>
-        </select>
 
-        <button type="button" class="btn-primary" onclick="comprarProducto(${i})" style="padding:10px; font-size:15px;">🛍️ Comprar por WhatsApp</button>
-      `;
-      contenedor.appendChild(card);
-    });
+    productos.forEach(
+      (p, i) => {
+
+        const card =
+          document.createElement("div");
+
+        card.className =
+          "producto-card";
+
+
+        card.innerHTML = `
+
+          <img
+            src="${p.imagen}"
+            alt="${p.nombre}"
+          >
+
+          <h3>
+            ${p.nombre}
+          </h3>
+
+          <p
+            style="
+              font-size:13px;
+              color:#aaa;
+            "
+          >
+            ${p.descripcion}
+          </p>
+
+          <div class="precio">
+            $${p.precio.toLocaleString()} COP
+          </div>
+
+          <label
+            style="
+              margin-top:5px;
+              font-size:12px;
+            "
+          >
+            Cantidad:
+          </label>
+
+          <input
+            type="number"
+            min="1"
+            value="1"
+            id="cant-${i}"
+            style="margin-bottom:8px;"
+          >
+
+          <input
+            type="text"
+            placeholder="Tu Nombre"
+            id="prod-nombre-${i}"
+            style="margin-bottom:8px;"
+          >
+
+          <input
+            type="tel"
+            placeholder="Tu WhatsApp"
+            id="prod-tel-${i}"
+            style="margin-bottom:8px;"
+          >
+
+          <input
+            type="text"
+            placeholder="Dirección de Envío"
+            id="prod-dir-${i}"
+            style="margin-bottom:8px;"
+          >
+
+          <label style="font-size:12px;">
+            Vendedor a pedir:
+          </label>
+
+          <select
+            id="prod-barbero-${i}"
+            style="margin-bottom:12px;"
+          >
+
+            <option value="573012096741">
+              confecciones magnus
+            </option>
+
+          </select>
+
+          <button
+            type="button"
+            class="btn-primary"
+            onclick="comprarProducto(${i})"
+            style="
+              padding:10px;
+              font-size:15px;
+            "
+          >
+            🛍️ Comprar por WhatsApp
+          </button>
+
+        `;
+
+
+        contenedor.appendChild(card);
+
+      }
+    );
+
   }
 
-  // COMPRA DE PRODUCTO POR WHATSAPP
-  function comprarProducto(index) {
-    const producto = productos[index];
-    const cantidad = document.getElementById(`cant-${index}`).value;
-    const nombre = document.getElementById(`prod-nombre-${index}`).value.trim();
-    const telefono = document.getElementById(`prod-tel-${index}`).value.trim();
-    const direccion = document.getElementById(`prod-dir-${index}`).value.trim();
-    const numBarbero = document.getElementById(`prod-barbero-${index}`).value;
 
-    if (!nombre || !telefono || !direccion || cantidad < 1) {
-      alert("Por favor completa tu Nombre, WhatsApp y Dirección para el envío.");
+  // =========================================
+  // COMPRA DE PRODUCTO POR WHATSAPP
+  // =========================================
+
+  function comprarProducto(index){
+
+    const producto =
+      productos[index];
+
+
+    const cantidad =
+      document
+        .getElementById(
+          `cant-${index}`
+        )
+        .value;
+
+
+    const nombre =
+      document
+        .getElementById(
+          `prod-nombre-${index}`
+        )
+        .value
+        .trim();
+
+
+    const telefono =
+      document
+        .getElementById(
+          `prod-tel-${index}`
+        )
+        .value
+        .trim();
+
+
+    const direccion =
+      document
+        .getElementById(
+          `prod-dir-${index}`
+        )
+        .value
+        .trim();
+
+
+    const numBarbero =
+      document
+        .getElementById(
+          `prod-barbero-${index}`
+        )
+        .value;
+
+
+    if(
+      !nombre ||
+      !telefono ||
+      !direccion ||
+      cantidad < 1
+    ){
+
+      alert(
+        "Por favor completa tu Nombre, WhatsApp y Dirección para el envío."
+      );
+
       return;
+
     }
 
-    const total = producto.precio * cantidad;
 
-    const mensaje = 
+    const total =
+      producto.precio * cantidad;
+
+
+    const mensaje =
+
 `*NUEVA COMPRA - CATÁLOGO BARBERÍA*
 ------------------------------------------
 📦 *Producto:* ${producto.nombre}
@@ -463,13 +1282,31 @@ Por favor me confirmas disponibilidad y valor del servicio. ¡Muchas gracias!`;
 ------------------------------------------
 Quedo atento a los datos para la confirmación y pago.`;
 
-    const url = "https://wa.me/" + numBarbero + "?text=" + encodeURIComponent(mensaje);
-    window.open(url, "_blank");
+
+    const url =
+      "https://wa.me/"
+      + numBarbero
+      + "?text="
+      + encodeURIComponent(mensaje);
+
+
+    window.open(
+      url,
+      "_blank"
+    );
+
   }
 
+
+  // =========================================
   // INICIALIZACIÓN
+  // =========================================
+
   actualizarHorarios();
+
   cargarCatalogo();
+
 </script>
+
 </body>
 </html>
