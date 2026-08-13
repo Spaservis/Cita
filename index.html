@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#111111">
+  <title>Barbería a Domicilio | Reserva tu turno</title>
+  <style>
+    :root{
+      --black:#0d0d0d;
+      --dark:#171717;
+      --yellow:#ffd400;
+      --green:#a8e600;
+      --white:#fff;
+      --gray:#bdbdbd;
+      --line:#303030;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Arial,Helvetica,sans-serif;
+      background:linear-gradient(135deg,#080808,#1b1b1b);
+      color:var(--white);
+    }
+    .wrap{max-width:850px;margin:auto;padding:18px}
+    header{
+      text-align:center;
+      padding:28px 18px 22px;
+      border-radius:22px;
+      background:linear-gradient(135deg,#111,#252525);
+      border:1px solid #333;
+      box-shadow:0 12px 35px #0008;
+    }
+    .logo{font-size:52px}
+    h1{font-size:clamp(32px,7vw,58px);margin:5px 0;color:var(--yellow);font-weight:900}
+    .subtitle{font-size:clamp(18px,4vw,27px);font-weight:800}
+    .tag{display:inline-block;background:var(--green);color:#111;padding:9px 15px;border-radius:30px;font-weight:900;margin-top:12px}
+    .card{
+      margin-top:18px;
+      padding:22px;
+      background:#151515;
+      border:1px solid var(--line);
+      border-radius:20px;
+      box-shadow:0 8px 25px #0006;
+    }
+    h2{margin-top:0;color:var(--yellow)}
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .step{background:#202020;padding:15px;border-radius:14px;text-align:center}
+    .step b{display:block;color:var(--green);font-size:19px;margin-bottom:5px}
+    label{display:block;font-weight:800;margin:15px 0 7px}
+    input,select,textarea{
+      width:100%;padding:14px;border-radius:11px;border:1px solid #444;
+      background:#0e0e0e;color:#fff;font-size:16px;outline:none;
+    }
+    input:focus,select:focus,textarea:focus{border-color:var(--yellow)}
+    textarea{min-height:90px;resize:vertical}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    button{
+      width:100%;margin-top:20px;padding:17px;border:0;border-radius:13px;
+      background:#25d366;color:#071008;font-size:20px;font-weight:900;cursor:pointer;
+    }
+    button:hover{filter:brightness(1.08)}
+    .note{font-size:13px;color:var(--gray);line-height:1.5;margin-top:12px}
+    .contact{
+      text-align:center;padding:18px;color:var(--gray)
+    }
+    .phone{color:var(--yellow);font-weight:900;font-size:20px}
+    .success{
+      display:none;margin-top:15px;padding:14px;border-radius:12px;
+      background:#193b17;color:#d9ffd5;border:1px solid #4c9e46;
+    }
+    @media(max-width:650px){
+      .steps,.row{grid-template-columns:1fr}
+      .wrap{padding:10px}
+      .card{padding:17px}
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="logo">💈✂️</div>
+    <h1>¿NECESITAS UN CORTE?</h1>
+    <div class="subtitle">TU BARBERO VA HASTA TU CASA</div>
+    <div class="tag">📲 RESERVA TU TURNO</div>
+  </header>
+
+  <section class="card">
+    <h2>¿Cómo funciona?</h2>
+    <div class="steps">
+      <div class="step"><b>1. SOLICITA</b>Completa tus datos</div>
+      <div class="step"><b>2. ENVÍA</b>La solicitud por WhatsApp</div>
+      <div class="step"><b>3. CONFIRMA</b>El horario con el barbero</div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>💈 Solicitar turno</h2>
+
+    <form id="bookingForm">
+      <label for="nombre">Nombre</label>
+      <input id="nombre" name="nombre" required placeholder="Nombre del cliente">
+
+      <div class="row">
+        <div>
+          <label for="telefono">Teléfono</label>
+          <input id="telefono" name="telefono" type="tel" required placeholder="300 000 0000">
+        </div>
+        <div>
+          <label for="servicio">Servicio</label>
+          <select id="servicio" name="servicio" required>
+            <option value="">Selecciona</option>
+            <option>Corte clásico</option>
+            <option>Fade / degradado</option>
+            <option>Corte + barba</option>
+            <option>Barba</option>
+            <option>Otro</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div>
+          <label for="fecha">Fecha preferida</label>
+          <input id="fecha" name="fecha" type="date" required>
+        </div>
+        <div>
+          <label for="hora">Hora preferida</label>
+          <input id="hora" name="hora" type="time" required>
+        </div>
+      </div>
+
+      <label for="direccion">Dirección / punto de referencia</label>
+      <input id="direccion" name="direccion" required placeholder="Dirección o referencia para el domicilio">
+
+      <label for="mensaje">Observaciones</label>
+      <textarea id="mensaje" name="mensaje" placeholder="Ej.: corte para niño, estilo solicitado, etc."></textarea>
+
+      <button type="submit">📲 ENVIAR SOLICITUD POR WHATSAPP</button>
+
+      <div id="success" class="success">
+        Se abrirá WhatsApp con la solicitud preparada. Revisa el mensaje y presiona <b>Enviar</b>.
+      </div>
+
+      <div class="note">
+        El turno queda confirmado únicamente cuando el profesional responda y confirme disponibilidad.
+        Para menores de edad, la solicitud debe realizarla o autorizarla un padre, madre o acudiente.
+      </div>
+    </form>
+  </section>
+
+  <div class="contact">
+    Atención y reservas<br>
+    <span class="phone">WhatsApp: 300 111 8739</span>
+    <br><br>
+    <strong>✂️ CORTE • ESTILO • COMODIDAD</strong><br>
+    ¡TU ESTILO, DONDE ESTÉS!
+  </div>
+</div>
+
+<script>
+  // Número de WhatsApp del profesional en formato internacional.
+  const BARBERO = "573001118739";
+
+  // Fecha mínima = hoy.
+  const fecha = document.getElementById("fecha");
+  const hoy = new Date();
+  const yyyy = hoy.getFullYear();
+  const mm = String(hoy.getMonth()+1).padStart(2,"0");
+  const dd = String(hoy.getDate()).padStart(2,"0");
+  fecha.min = `${yyyy}-${mm}-${dd}`;
+
+  document.getElementById("bookingForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    const nombre = document.getElementById("nombre").value.trim();
+    const telefono = document.getElementById("telefono").value.trim();
+    const servicio = document.getElementById("servicio").value;
+    const fechaValor = document.getElementById("fecha").value;
+    const hora = document.getElementById("hora").value;
+    const direccion = document.getElementById("direccion").value.trim();
+    const observaciones = document.getElementById("mensaje").value.trim();
+
+    const fechaBonita = fechaValor
+      ? new Date(fechaValor + "T00:00:00").toLocaleDateString("es-CO")
+      : "";
+
+    const texto =
+`💈 SOLICITUD DE TURNO - BARBERÍA A DOMICILIO
+
+👤 Cliente: ${nombre}
+📞 Teléfono: ${telefono}
+✂️ Servicio: ${servicio}
+📅 Fecha solicitada: ${fechaBonita}
+🕐 Hora solicitada: ${hora}
+🏠 Dirección / referencia: ${direccion}
+📝 Observaciones: ${observaciones || "Sin observaciones"}
+
+Por favor confirmar disponibilidad y valor del servicio.`;
+
+    const url = "https://wa.me/" + BARBERO + "?text=" + encodeURIComponent(texto);
+
+    document.getElementById("success").style.display = "block";
+    window.open(url, "_blank");
+  });
+</script>
+</body>
+</html>
