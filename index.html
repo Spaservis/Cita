@@ -16,6 +16,7 @@
       --gray:#bdbdbd;
       --line:#303030;
       --card-bg:#151515;
+      --whatsapp:#25d366;
     }
 
     *{
@@ -49,7 +50,6 @@
       box-shadow:0 12px 35px #0008;
     }
 
-    /* LOGO COMO IMAGEN */
     .logo img{
       width:240px;
       height:240px;
@@ -112,7 +112,7 @@
     }
 
     /* =========================
-       TARJETAS Y SECCIONES
+       TARJETAS
        ========================= */
 
     .card{
@@ -155,6 +155,25 @@
       color:var(--green);
       font-size:19px;
       margin-bottom:5px;
+    }
+
+    /* =========================
+       AGENDA
+       ========================= */
+
+    .agenda-info{
+      margin-top:15px;
+      padding:14px;
+      border-radius:12px;
+      background:#202020;
+      border:1px solid #333;
+      color:var(--gray);
+      font-size:14px;
+      line-height:1.5;
+    }
+
+    .agenda-info strong{
+      color:var(--green);
     }
 
     /* =========================
@@ -208,7 +227,7 @@
       padding:17px;
       border:0;
       border-radius:13px;
-      background:#25d366;
+      background:var(--whatsapp);
       color:#071008;
       font-size:18px;
       font-weight:900;
@@ -261,7 +280,7 @@
     }
 
     /* =========================
-       CATÁLOGO DE PRODUCTOS
+       CATÁLOGO
        ========================= */
 
     .catalogo-grid{
@@ -331,6 +350,7 @@
       .logo img{
         width:110px;
         height:110px;
+        margin-bottom:35px;
       }
     }
   </style>
@@ -346,7 +366,6 @@
 
   <header>
 
-    <!-- AQUÍ ESTÁ EL NUEVO LOGO -->
     <div class="logo">
       <img src="logo.png" alt="Logo de la barbería">
     </div>
@@ -365,7 +384,7 @@
 
 
   <!-- =========================
-       MENU DE NAVEGACIÓN
+       MENU
        ========================= -->
 
   <nav class="menu-bar">
@@ -386,7 +405,7 @@
 
 
   <!-- =========================
-       SECCIÓN 1: RESERVA
+       RESERVA
        ========================= -->
 
   <div id="tab-reserva" class="tab-content active">
@@ -423,7 +442,9 @@
 
       <form id="bookingForm">
 
-        <!-- SELECCIÓN DE BARBERO -->
+        <!-- =========================
+             BARBERO
+             ========================= -->
 
         <label for="barbero">
           Barbero de tu preferencia
@@ -445,6 +466,17 @@
 
         </select>
 
+
+        <div class="agenda-info">
+          📅 La disponibilidad mostrada corresponde
+          <strong>exclusivamente al profesional seleccionado</strong>.
+          Cada barbero tiene su propia agenda independiente.
+        </div>
+
+
+        <!-- =========================
+             NOMBRE
+             ========================= -->
 
         <label for="nombre">
           Nombre
@@ -523,6 +555,10 @@
 
         </div>
 
+
+        <!-- =========================
+             FECHA Y HORA
+             ========================= -->
 
         <div class="row">
 
@@ -609,12 +645,21 @@
 
         <div class="note">
 
-          El turno es confirmado por el profesional
+          El turno es confirmado por el profesional.
+
+          <br><br>
+
+          ⚠️ La hora seleccionada quedará ocupada
+          solamente para el barbero elegido.
 
         </div>
 
       </form>
 
+
+      <!-- =========================
+           ADMINISTRACIÓN
+           ========================= -->
 
       <div
         style="
@@ -640,7 +685,7 @@
 
 
   <!-- =========================
-       SECCIÓN 2: CATÁLOGO
+       CATÁLOGO
        ========================= -->
 
   <div id="tab-catalogo" class="tab-content">
@@ -708,7 +753,17 @@
     "10:00 PM"
   ];
 
+
+  // =========================================
+  // CONTRASEÑA ADMINISTRADOR
+  // =========================================
+
   const CONTRASENA_ADMIN = "admi123";
+
+
+  // =========================================
+  // RECUPERAR TURNOS
+  // =========================================
 
   let turnosTomados =
     JSON.parse(
@@ -733,30 +788,33 @@
 
 
   // =========================================
-  // NAVEGACIÓN ENTRE PESTAÑAS
+  // NAVEGACIÓN
   // =========================================
 
   function switchTab(tabId, event){
 
     document
-      .querySelectorAll('.tab-content')
+      .querySelectorAll(".tab-content")
       .forEach(el =>
-        el.classList.remove('active')
+        el.classList.remove("active")
       );
 
-    document
-      .querySelectorAll('.nav-btn')
-      .forEach(el =>
-        el.classList.remove('active')
-      );
 
     document
-      .getElementById('tab-' + tabId)
-      .classList.add('active');
+      .querySelectorAll(".nav-btn")
+      .forEach(el =>
+        el.classList.remove("active")
+      );
+
+
+    document
+      .getElementById("tab-" + tabId)
+      .classList.add("active");
+
 
     if(event && event.currentTarget){
 
-      event.currentTarget.classList.add('active');
+      event.currentTarget.classList.add("active");
 
     }
 
@@ -770,28 +828,40 @@
   const fechaInput =
     document.getElementById("fecha");
 
-  const hoy = new Date();
+
+  const hoy =
+    new Date();
+
 
   const yyyy =
     hoy.getFullYear();
 
+
   const mm =
-    String(hoy.getMonth()+1)
+    String(hoy.getMonth() + 1)
       .padStart(2,"0");
+
 
   const dd =
     String(hoy.getDate())
       .padStart(2,"0");
 
-  fechaInput.min =
+
+  const fechaHoy =
     `${yyyy}-${mm}-${dd}`;
 
+
+  fechaInput.min =
+    fechaHoy;
+
+
   fechaInput.value =
-    `${yyyy}-${mm}-${dd}`;
+    fechaHoy;
 
 
   // =========================================
-  // ACTUALIZAR HORARIOS DISPONIBLES
+  // ACTUALIZAR HORARIOS
+  // SEGÚN BARBERO + FECHA
   // =========================================
 
   function actualizarHorarios(){
@@ -799,36 +869,68 @@
     const selectHora =
       document.getElementById("hora");
 
+
     const fechaSeleccionada =
       fechaInput.value;
 
+
+    const barberoSeleccionado =
+      document.getElementById("barbero").value;
+
+
+    // =======================================
+    // IMPORTANTE:
+    //
+    // SOLO se consideran ocupados los turnos
+    // correspondientes al barbero seleccionado.
+    // =======================================
+
     const tomadosEnFecha =
       turnosTomados
-        .filter(
-          t => t.fecha === fechaSeleccionada
+        .filter(t =>
+
+          t.fecha === fechaSeleccionada &&
+
+          (
+            t.barbero === barberoSeleccionado ||
+
+            /*
+              Compatibilidad con reservas antiguas:
+              si el registro no tenía barbero,
+              NO se bloquea automáticamente.
+            */
+            false
+          )
+
         )
-        .map(
-          t => t.hora
-        );
+        .map(t => t.hora);
+
 
     const disponibles =
       horarios.filter(
         h => !tomadosEnFecha.includes(h)
       );
 
+
     selectHora.innerHTML = "";
+
 
     if(disponibles.length === 0){
 
       const option =
         document.createElement("option");
 
-      option.textContent =
-        "Sin turnos libres para esta fecha";
 
-      option.value = "";
+      option.textContent =
+        "Sin turnos libres para este barbero";
+
+
+      option.value =
+        "";
+
 
       selectHora.appendChild(option);
+
 
     }else{
 
@@ -837,9 +939,14 @@
         const option =
           document.createElement("option");
 
-        option.value = h;
 
-        option.textContent = h;
+        option.value =
+          h;
+
+
+        option.textContent =
+          h;
+
 
         selectHora.appendChild(option);
 
@@ -850,10 +957,31 @@
   }
 
 
+  // =========================================
+  // CAMBIO DE FECHA
+  // =========================================
+
   fechaInput.addEventListener(
     "change",
     actualizarHorarios
   );
+
+
+  // =========================================
+  // CAMBIO DE BARBERO
+  // =========================================
+  //
+  // Esto hace que la agenda cambie
+  // inmediatamente cuando el cliente
+  // selecciona otro profesional.
+  // =========================================
+
+  document
+    .getElementById("barbero")
+    .addEventListener(
+      "change",
+      actualizarHorarios
+    );
 
 
   // =========================================
@@ -866,8 +994,15 @@
       .getElementById("bookingForm")
       .reset();
 
+
     fechaInput.value =
-      `${yyyy}-${mm}-${dd}`;
+      fechaHoy;
+
+
+    document
+      .getElementById("success")
+      .style.display = "none";
+
 
     actualizarHorarios();
 
@@ -887,11 +1022,30 @@
         e.preventDefault();
 
 
-        const barberoTelefono =
-          document
-            .getElementById("barbero")
-            .value;
+        // ===================================
+        // OBTENER BARBERO
+        // ===================================
 
+        const barberoSelect =
+          document.getElementById("barbero");
+
+
+        const barberoTelefono =
+          barberoSelect.value;
+
+
+        const barberoNombre =
+          barberoSelect
+            .options[
+              barberoSelect.selectedIndex
+            ]
+            .textContent
+            .trim();
+
+
+        // ===================================
+        // DATOS DEL CLIENTE
+        // ===================================
 
         const nombre =
           document
@@ -940,6 +1094,10 @@
           || "Sin observaciones";
 
 
+        // ===================================
+        // VALIDACIÓN
+        // ===================================
+
         if(!hora){
 
           alert(
@@ -951,22 +1109,96 @@
         }
 
 
+        if(!fechaValor){
+
+          alert(
+            "Por favor selecciona una fecha."
+          );
+
+          return;
+
+        }
+
+
+        // ===================================
+        // VERIFICACIÓN FINAL
+        // EVITA DUPLICADOS PARA EL MISMO
+        // BARBERO, FECHA Y HORA.
+        // ===================================
+
+        const yaExiste =
+          turnosTomados.some(t =>
+
+            t.barbero === barberoTelefono &&
+
+            t.fecha === fechaValor &&
+
+            t.hora === hora
+
+          );
+
+
+        if(yaExiste){
+
+          alert(
+            "⚠️ Esa hora acaba de ser ocupada para este profesional. Selecciona otra hora."
+          );
+
+
+          actualizarHorarios();
+
+          return;
+
+        }
+
+
+        // ===================================
+        // FECHA BONITA
+        // ===================================
+
         const fechaBonita =
           fechaValor
             ? new Date(
                 fechaValor + "T00:00:00"
-              ).toLocaleDateString("es-CO")
+              ).toLocaleDateString(
+                "es-CO"
+              )
             : "";
 
 
-        // Guardar reserva localmente
+        // ===================================
+        // GUARDAR RESERVA
+        //
+        // AHORA EL TURNO INCLUYE:
+        // barbero
+        // fecha
+        // hora
+        // nombre
+        // teléfono
+        // ===================================
 
         const nuevoTurno = {
 
-          fecha: fechaValor,
-          hora,
-          nombre,
-          telefono
+          id:
+            Date.now(),
+
+          barbero:
+            barberoTelefono,
+
+          barberoNombre:
+            barberoNombre,
+
+          fecha:
+            fechaValor,
+
+          hora:
+            hora,
+
+          nombre:
+            nombre,
+
+          telefono:
+            telefono
 
         };
 
@@ -978,18 +1210,21 @@
 
         localStorage.setItem(
           "turnos_barberia",
-          JSON.stringify(turnosTomados)
+          JSON.stringify(
+            turnosTomados
+          )
         );
 
 
-        // =====================================
-        // MENSAJE DE WHATSAPP
-        // =====================================
+        // ===================================
+        // MENSAJE WHATSAPP
+        // ===================================
 
         const texto =
 
 `*SOLICITUD DE TURNO - BARBERÍA A DOMICILIO*
 ------------------------------------------
+💈 *Profesional:* ${barberoNombre}
 👤 *Cliente:* ${nombre}
 📞 *Teléfono:* ${telefono}
 ✂️ *Servicio:* ${servicio}
@@ -1019,6 +1254,10 @@ Por favor me confirmas disponibilidad y valor del servicio. ¡Muchas gracias!`;
         );
 
 
+        // ===================================
+        // ACTUALIZAR AGENDA
+        // ===================================
+
         actualizarHorarios();
 
       }
@@ -1041,7 +1280,7 @@ Por favor me confirmas disponibilidad y valor del servicio. ¡Muchas gracias!`;
 
       if(
         confirm(
-          "¿Está seguro de limpiar todos los turnos ocupados?"
+          "¿Está seguro de limpiar TODOS los turnos ocupados de TODOS los profesionales?"
         )
       ){
 
@@ -1049,11 +1288,14 @@ Por favor me confirmas disponibilidad y valor del servicio. ¡Muchas gracias!`;
           "turnos_barberia"
         );
 
+
         turnosTomados = [];
+
 
         alert(
           "✅ Historial de turnos limpiado correctamente."
         );
+
 
         actualizarHorarios();
 
@@ -1081,6 +1323,7 @@ Por favor me confirmas disponibilidad y valor del servicio. ¡Muchas gracias!`;
         "catalogo-container"
       );
 
+
     contenedor.innerHTML = "";
 
 
@@ -1089,6 +1332,7 @@ Por favor me confirmas disponibilidad y valor del servicio. ¡Muchas gracias!`;
 
         const card =
           document.createElement("div");
+
 
         card.className =
           "producto-card";
@@ -1238,12 +1482,13 @@ Por favor me confirmas disponibilidad y valor del servicio. ¡Muchas gracias!`;
         .value
         .trim();
 
-const numBarbero = 
-  document
-    .getElementById(
-     `prod-barbero-${index}`
-      )
-    .value;
+
+    const numBarbero =
+      document
+        .getElementById(
+          `prod-barbero-${index}`
+        )
+        .value;
 
 
     if(
@@ -1285,7 +1530,9 @@ Quedo atento a los datos para la confirmación y pago.`;
       "https://wa.me/"
       + numBarbero
       + "?text="
-      + encodeURIComponent(mensaje);
+      + encodeURIComponent(
+        mensaje
+      );
 
 
     window.open(
